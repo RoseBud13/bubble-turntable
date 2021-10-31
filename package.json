@@ -1,0 +1,20 @@
+{
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "serve": "vite preview",
+    "deploy": "sh deploy.sh"
+  },
+  "dependencies": {
+    "vue": "^3.0.5",
+    "vue-router": "^4.0.9"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.2.3",
+    "@vue/compiler-sfc": "^3.0.5",
+    "less": "^4.1.1",
+    "sass": "^1.35.1",
+    "vite": "^2.3.7"
+  }
+}
