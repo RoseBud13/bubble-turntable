@@ -56,14 +56,14 @@
 <script>
 import songs from "../mocks/songs"
 import { timeFormater } from "../utils/timer"
-import { threatSongs } from "../utils/tools"
+import { threatSongs, shuffleArray } from "../utils/tools"
 
 export default {
     data() {
         return {
             player: new Audio(),
             current: {},
-            songs: songs,
+            songs: shuffleArray(songs),
             currentTimer: "00:00",
             index: 0,
             isPlaying: false,
@@ -300,13 +300,13 @@ export default {
     text-overflow: ellipsis;
 }
 .progress-text {
-  padding-top: 2px;
-  padding-left: 2px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #ccc;
-  transform: scale(0.6);
-  transform-origin: left top;
+    padding-top: 2px;
+    padding-left: 2px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ccc;
+    transform: scale(0.6);
+    transform-origin: left top;
 }
 .bar {
     height: 3px;
@@ -321,11 +321,11 @@ export default {
 }
 
 .disk-list {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.3);
     overflow-y: auto;
     height: 70px;
-    width: 300px;
-    border-radius: 5px;
+    width: 340px;
+    border-radius: 33px;
     z-index: 12;
     position: fixed;
     top: 220px;
@@ -348,9 +348,6 @@ export default {
     padding-top: 100%;
     border-radius: 100%;
     overflow: hidden;
-    transform: translateY(-11%) scale(0.88);
-    transform-origin: center bottom;
-    transition: all 0.6s ease;
 }
 .disk-list .disk-cover-in-list {
     position: absolute;

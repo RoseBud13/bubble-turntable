@@ -348,7 +348,7 @@ export default {
         top: 0;
         width: 100%;
         height: auto;
-        border-radius: 8px 8px 0 0;
+        border-radius: 8px;
     }
 }
 .card-content {

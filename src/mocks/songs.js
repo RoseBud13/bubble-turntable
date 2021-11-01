@@ -41,6 +41,18 @@ const songs = [
         src: "https://music.163.com/song/media/outer/url?id=1408941731.mp3",
         cover: "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/song7.jpg"
     },
+    {
+        title: "爱人错过",
+        seconds: 292,
+        src: "https://music.163.com/song/media/outer/url?id=1368754688.mp3",
+        cover: "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/song8.JPG"
+    },
+    {
+        title: "My Jinji",
+        seconds: 400,
+        src: "https://music.163.com/song/media/outer/url?id=438462713.mp3",
+        cover: "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/song9.JPG"
+    }
 ];
 
 export default songs;
