@@ -24,7 +24,7 @@ const cards = [
         scale: 0.9,
         translateY: '4vh',
         transitionTime: 1,
-        img: "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/song1.jpg",
+        img: "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/song1.JPG",
         puzzle: 'none'
     },
     {
