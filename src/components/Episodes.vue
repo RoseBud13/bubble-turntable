@@ -1,0 +1,149 @@
+<template>
+    <div class="episodes-sidebar">
+        <div class="sidebar-backdrop" @click="closeSidebarPanel" v-if="isPanelOpen"></div>
+        <transition name="slide">
+            <div v-if="isPanelOpen" class="sidebar-panel">
+                <div class="sidebar-card">
+                    <ul>
+                        <li v-for="episode in episodes" :key="episode.name" class="episodes">
+                            <div class="details">
+                                <h2 class="episode-title">
+                                {{ episode.name }}
+                                </h2>
+                                <p class="episode-date">{{ episode.releaseDate }}</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="sidebar-gift">
+                    <div>
+                        <p>你选了decaf的美式</p>
+                        <p style="display: inline">我买了</p><input style="width: 38px" type="text" @input="inputListener" /><p style="display: inline">的薄荷</p>
+                        <a href="http://49.235.109.138/wannings-turntable/"><p style="font: 30px" v-show="showGift">🎁</p></a>
+                    </div>
+                </div>
+            </div>
+        </transition>
+    </div>
+</template>
+<script>
+import episodes from '../mocks/episodes'
+import { mapMutations } from 'vuex';
+
+export default {
+    data() {
+        return {
+            episodes: episodes,
+            showGift: false
+        }
+    },
+    methods: {
+        ...mapMutations(['toggleSidebar']),
+
+        closeSidebarPanel() {
+            this.toggleSidebar()
+        },
+
+        inputListener(e) {
+            this.inputV = e.target.value;
+            if (this.inputV === 'extra') {
+                this.showGift = true;
+            }
+        }
+    },
+    computed: {
+        isPanelOpen() {
+            return this.$store.state.isSidebarOpen;
+        }
+    }
+}
+</script>
+<style>
+    .slide-enter-active,
+    .slide-leave-active{
+        transition: all .5s;
+    }
+
+    .slide-enter {
+        transform: translate(-100%, 0);
+        /* transition: all 150ms ease-in 0s; */
+    }
+
+    .slide-leave-to {
+        transform: translate(100%, 0);
+    }
+
+    .sidebar-backdrop {
+        background-color: rgba(19, 15, 64, .4);
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+        z-index: 999;
+    }
+
+    .sidebar-panel {
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        width: 155px;
+        z-index: 999;
+    }
+
+    .sidebar-card {
+        overflow-y: auto;
+        background-color: rgba(255, 255, 255, 1);
+        height: 430px;
+        width: 100%;
+        padding: 13px;
+        position: fixed;
+        top: 110px;
+        /* transform: translateY(-50%); */
+        border-radius: 30px 0 0 0;
+    }
+
+    .sidebar-gift {
+        position: fixed;
+        top: 555px;
+        background-color: rgba(255, 255, 255, 1);
+        height: 70px;
+        width: 100%;
+        padding: 13px;
+        border-radius: 0 0 0 30px;
+    }
+
+    .episodes {
+        display: flex;
+        padding: 10px;
+    }
+    .details {
+        margin-left: 10px;
+        width: 100%;
+    }
+    .details > .episode-title {
+        color: #585858;
+        font-size: 18px;
+        text-align: left;
+    }
+    .details > .episode-date {
+        color: #5d5555;
+        text-align: left;
+    }
+
+    .episode-title{
+        width: 100%;
+        color: #53565a;
+        font-size: 1.13em;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .episode-date {
+        font-family: Muli;
+        width: 100%;
+        font-weight: 400;
+        text-align: center;
+    }
+</style>

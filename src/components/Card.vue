@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import cards from '../mocks/cards'
+import cards from '../mocks/episodeOne/cards'
 
 export default {
     data() {

@@ -49,14 +49,22 @@
                     </div>
                 </div>
             </li>
+            <li class="song">
+                <div class="disk-wrapper-in-list" @click.prevent="toggleEpisodes">
+                    <div class="disk-in-list">
+                        <label class="disk-cover-in-list"/>
+                    </div>
+                </div>
+            </li>
         </ul>
     </div>
 </template>
 
 <script>
-import songs from "../mocks/songs"
+import songs from "../mocks/episodeOne/songs"
 import { timeFormater } from "../utils/timer"
 import { threatSongs, shuffleArray } from "../utils/tools"
+import { mapMutations } from 'vuex';
 
 export default {
     data() {
@@ -73,6 +81,12 @@ export default {
         }
     },
     methods: {
+        ...mapMutations(['toggleSidebar']),
+
+        toggleEpisodes() {
+            this.toggleSidebar();
+        },
+
         playListener() {
             this.player.addEventListener("timeupdate", () => {
                 var playerTimer = this.player.currentTime;

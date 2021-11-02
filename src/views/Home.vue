@@ -4,6 +4,7 @@
         <stars v-show="starsDisplay === 'show stars'"></stars>
         <player></player>
         <card v-on:child-func = "parentfunc"></card>
+        <episodes></episodes>
     </div>
 </template>
 
@@ -12,13 +13,15 @@ import Bubbles from '../components/Bubbles.vue'
 import Player from '../components/Player.vue'
 import Card from '../components/Card.vue'
 import Stars from '../components/Stars.vue'
+import Episodes from '../components/Episodes.vue'
 
 export default {
     components: {
         Bubbles,
         Player,
         Card,
-        Stars
+        Stars,
+        Episodes
     },
     data() {
         return {
