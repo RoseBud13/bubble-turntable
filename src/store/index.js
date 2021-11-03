@@ -3,20 +3,15 @@ import {createStore} from 'vuex'
 export default createStore({
     state: {
         isSidebarOpen: false,
-        songSource: '',
-        cardSource: ''
+        episode: 'episodeOne'
     },
     mutations: {
         toggleSidebar() {
             this.state.isSidebarOpen = !this.state.isSidebarOpen;
         },
 
-        setSongSource(state, data) {
-            state.songSource = data;
-        },
-
-        setCardSource(state, data) {
-            state.cardSource = data;
+        setEpisode(state, url) {
+            state.episode = url;
         },
     },
     actions: {},

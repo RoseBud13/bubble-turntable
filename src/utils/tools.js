@@ -14,11 +14,11 @@ const deleteElement = (array, target) => {
 
 /**
  * Insert initial songs params
- * @param {array} songs
+ * @param {array} songList
  */
 
-const threatSongs = songs => {
-  return songs.map(song => {
+const threatSongs = songList => {
+  return songList.map(song => {
     song["isPlaying"] = false;
     song["currentTimer"] = "00:00";
     song["totalTimer"] = timeFormater(song.seconds);

@@ -44,12 +44,13 @@
 </template>
 
 <script>
-import cards from '../mocks/episodeOne/cards'
+import { getCards } from '../api'
 
 export default {
     data() {
         return {
-            cardArrs: cards,
+            cardArrs: [],
+            currentEpisode: this.$store.state.episode,
             isClick: true,
             startY: 0, // 触摸位置
             endY: 0, // 结束位置
@@ -63,7 +64,24 @@ export default {
             childmsg: 'show stars'
         }
     },
+    mounted() {
+        this.fetchCards(this.currentEpisode);
+    },
+    watch: {
+        '$store.state.episode'(newVal, oldVal) {
+            this.fetchCards(newVal);
+        }
+    },
     methods: {
+        fetchCards(currentEpsd) {
+            getCards(currentEpsd).then(response => {
+                this.cardArrs = response.data;
+            }).catch(e => {
+                console.log(e)
+            });
+        },
+
+
         inputFun(e){
             //e.target 指向了dom元素
             this.inputValue = e.target.value;
@@ -72,11 +90,6 @@ export default {
                 console.log(this.inputValue);
             }
         },
-
-        // click() {
-        //     console.log('send')
-        //     this.$emit('child-func', this.childmsg);
-        // },
 
         // 滑动开始
         playerTouchStart (ev) {

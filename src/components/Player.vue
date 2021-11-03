@@ -42,7 +42,7 @@
     </div>
     <div class="disk-list" v-show="isDisplayed">
         <ul>
-            <li v-for="song in songs" :key="song.src" class="song">
+            <li v-for="song in songList" :key="song.src" class="song">
                 <div class="disk-wrapper-in-list" @click="play(song)">
                     <div class="disk-in-list">
                         <label class="disk-cover-in-list" ref="cover" :style="[{backgroundImage: `url('${song.cover}')`}]"/>
@@ -61,17 +61,19 @@
 </template>
 
 <script>
-import songs from "../mocks/episodeOne/songs"
 import { timeFormater } from "../utils/timer"
 import { threatSongs, shuffleArray } from "../utils/tools"
 import { mapMutations } from 'vuex';
+import { getSongs } from '../api'
 
 export default {
     data() {
         return {
             player: new Audio(),
+            songList: [],
+            songs: [],
+            currentEpisode: this.$store.state.episode,
             current: {},
-            songs: shuffleArray(songs),
             currentTimer: "00:00",
             index: 0,
             isPlaying: false,
@@ -80,11 +82,32 @@ export default {
             isDisplayed: false
         }
     },
+    mounted() {
+        this.fetchSongs(this.currentEpisode);
+        
+        const draw = () => {
+            requestAnimationFrame(draw);
+            const progress = this.player.currentTime / this.current.seconds;
+            this.progress = `${(progress * 100).toFixed(2)}%`;
+        };
+        draw();
+    },
     methods: {
         ...mapMutations(['toggleSidebar']),
 
         toggleEpisodes() {
             this.toggleSidebar();
+        },
+
+        fetchSongs(currentEpsd) {
+            getSongs(currentEpsd).then(response => {
+                this.songList = shuffleArray(response.data);
+                this.songs = threatSongs(this.songList);
+                this.current = this.songs[this.index];
+                this.player.src = this.current.src;
+            }).catch(e => {
+                console.log(e)
+            });
         },
 
         playListener() {
@@ -147,20 +170,12 @@ export default {
             }
         }
     },
-    mounted() {
-        this.songs = threatSongs(this.songs);
-        this.current = this.songs[this.index];
-        this.player.src = this.current.src;
-
-        const draw = () => {
-            requestAnimationFrame(draw);
-            const progress = this.player.currentTime / this.current.seconds;
-            this.progress = `${(progress * 100).toFixed(2)}%`;
-        };
-
-        draw();
-    },
     watch: {
+        '$store.state.episode'(newVal, oldVal) {
+            this.fetchSongs(newVal);
+            this.isPlaying = false;
+        },
+
         isPlaying(song) {
             if (!song) {
                 this.stopMatrix = window.getComputedStyle(this.$refs.cover).transform;
