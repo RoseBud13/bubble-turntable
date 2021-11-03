@@ -110,13 +110,14 @@ export default {
           transform: translate(-50%, -50%);
   color: #de6f90;
   text-shadow: 0 0 10px #cdc1c7, 0 0 10px rgba(211, 163, 225, 0.1);
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: 0.1em;
 }
 .greetings {
-  margin-top: 10px;
+  margin-top: 7px;
+  font-size: 13px;
 }
 .greetings p {
-  margin: 5px;
+  margin: 3px;
 }
 </style>

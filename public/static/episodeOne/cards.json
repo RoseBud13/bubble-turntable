@@ -24,7 +24,7 @@
         "scale": 0.9,
         "translateY": "4vh",
         "transitionTime": 1,
-        "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/song9.JPG",
+        "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeOne%2Fsong9.JPG",
         "puzzle": "none"
     },
     {
@@ -38,7 +38,7 @@
         "scale": 0.85,
         "translateY": "7vh",
         "transitionTime": 1,
-        "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/song2.JPG",
+        "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeOne%2Fsong2.JPG",
         "puzzle": "none"
     },
     {
@@ -52,7 +52,7 @@
         "scale": 0.5,
         "translateY": "29vh",
         "transitionTime": 1,
-        "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/song3.JPG",
+        "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeOne%2Fsong3.JPG",
         "puzzle": "none"
     },
     {
@@ -66,7 +66,7 @@
         "scale": 0.3,
         "translateY": "40vh",
         "transitionTime": 1,
-        "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/song4.JPG",
+        "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeOne%2Fsong4.JPG",
         "puzzle": "none"
     },
     {
@@ -80,7 +80,7 @@
         "scale": 0.25,
         "translateY": "70vh",
         "transitionTime": 1,
-        "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/song5.JPG",
+        "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeOne%2Fsong5.JPG",
         "puzzle": "none"
     },
     {
@@ -94,7 +94,7 @@
         "scale": 0.2,
         "translateY": "70vh",
         "transitionTime": 1,
-        "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/song6.JPG",
+        "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeOne%2Fsong6.JPG",
         "puzzle": "none"
     },
     {
@@ -108,7 +108,7 @@
         "scale": 0.18,
         "translateY": "70vh",
         "transitionTime": 1,
-        "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/song8.JPG",
+        "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeOne%2Fsong8.JPG",
         "puzzle": "none"
     },
     {
@@ -122,7 +122,7 @@
         "scale": 0.15,
         "translateY": "70vh",
         "transitionTime": 1,
-        "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/song1.JPG",
+        "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeOne%2Fsong1.JPG",
         "puzzle": "none"
     },
     {
@@ -136,7 +136,7 @@
         "scale": 0.12,
         "translateY": "70vh",
         "transitionTime": 1,
-        "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/song7.jpg",
+        "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeOne%2Fsong7.JPG",
         "puzzle": "none"
     }
 ]
