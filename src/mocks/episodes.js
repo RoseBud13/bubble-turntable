@@ -6,7 +6,7 @@ const episodes = [
     },
     {
         name: 'Episode Two',
-        releaseDate: '2021-11-03',
+        releaseDate: '2021-11-04',
         url: 'episodeTwo'
     }
 ];

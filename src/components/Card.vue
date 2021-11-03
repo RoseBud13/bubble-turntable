@@ -70,6 +70,7 @@ export default {
     watch: {
         '$store.state.episode'(newVal, oldVal) {
             this.fetchCards(newVal);
+            this.currentIndex = 0;
         }
     },
     methods: {
