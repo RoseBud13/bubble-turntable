@@ -17,9 +17,9 @@
                 </div>
                 <div class="sidebar-gift">
                     <p>你选了decaf的美式</p>
-                    <p style="display: inline">我买了</p><input style="width: 38px" type="text" @input="inputListener" /><p style="display: inline">的薄荷</p>
-                    <div class="gift-box" v-show="showGift">
-                        <button>🎁</button>
+                    <p style="display: inline">我买了</p><input style="width: 41px" type="text" @input="inputListener" /><p style="display: inline">的薄荷</p>
+                    <div class="gift-box" v-show="showGiftBox">
+                        <button @click="displayGift">🎁</button>
                         <!-- <a href="http://49.235.109.138/wannings-turntable/">🎁</a> -->
                     </div>
                 </div>
@@ -35,7 +35,8 @@ export default {
     data() {
         return {
             episodes: episodes,
-            showGift: false
+            showGiftBox: false,
+            openGiftBox: 'show gift'
         }
     },
     methods: {
@@ -54,8 +55,13 @@ export default {
         inputListener(e) {
             this.inputV = e.target.value;
             if ((this.inputV === 'extra') || (this.inputV === 'Extra')) {
-                this.showGift = true;
+                this.showGiftBox = true;
             }
+        },
+
+        displayGift() {
+            this.$emit('triggerGift', this.openGiftBox);
+            this.closeSidebarPanel();
         }
     },
     computed: {
@@ -117,12 +123,13 @@ export default {
     width: 100%;
     padding: 13px;
     border-radius: 0 0 0 30px;
+    color: #de6f90;
 }
 .sidebar-gift input {
     border: none;
     outline: none;
     border-radius: 0px;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid #de6f90;
 }
 .sidebar-gift textarea:focus, input:focus {
     outline: none;

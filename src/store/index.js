@@ -3,7 +3,7 @@ import {createStore} from 'vuex'
 export default createStore({
     state: {
         isSidebarOpen: false,
-        episode: 'episodeOne'
+        episode: 'episodeTwo'
     },
     mutations: {
         toggleSidebar() {

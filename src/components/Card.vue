@@ -81,12 +81,11 @@ export default {
             });
         },
 
-
         inputFun(e){
             //e.target 指向了dom元素
             this.inputValue = e.target.value;
             if ((this.inputValue === '除非给我看看') || (this.inputValue === '除非给你看看') || (this.inputValue === '除非让你看看') || (this.inputValue === '除非让我看看')) {
-                this.$emit('child-func', this.childmsg);
+                this.$emit('triggerStars', this.childmsg);
                 console.log(this.inputValue);
             }
         },
