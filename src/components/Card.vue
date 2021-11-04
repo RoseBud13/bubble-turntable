@@ -26,6 +26,7 @@
                         class="bg-story" 
                         :src="item.img" 
                         v-show="item.bgImg === 'story'"
+                        @click="previewImage(item.img)"
                     >
                     <div class="card-content">
                         <p>{{item.line1}}</p>
@@ -45,13 +46,20 @@
                 </div>
             </div>
         </div>
+        <div v-show="preview">
+            <img-display :src="src" :onClick="closeImgPreview"></img-display>
+        </div>
     </div>
 </template>
 
 <script>
 import { getCards } from '../api'
+import ImgDisplay from '../components/ImgDisplay.vue'
 
 export default {
+    components: {
+        ImgDisplay
+    },
     data() {
         return {
             cardArrs: [],
@@ -66,7 +74,9 @@ export default {
             slideDirection: 0, // 滑动方向：0 向下，1 向上
             slideFilishDistance: 300,  // 滑动切换动画完成的距离
             inputValue: '',
-            childmsg: 'show stars'
+            childmsg: 'show stars',
+            preview: false,
+            src: ''
         }
     },
     mounted() {
@@ -94,6 +104,15 @@ export default {
                 this.$emit('triggerStars', this.childmsg);
                 console.log(this.inputValue);
             }
+        },
+
+        previewImage(src) {
+            this.preview = true;
+            this.src = src;
+        },
+
+        closeImgPreview() {
+            this.preview = false;
         },
 
         // 滑动开始

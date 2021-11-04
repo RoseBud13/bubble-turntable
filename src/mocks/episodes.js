@@ -13,7 +13,7 @@ const episodes = [
     },
     {
         name: '「你今天真好看」P1',
-        releaseDate: '2021-11-04',
+        releaseDate: '2021-11-05',
         url: 'lookGoodP1',
         nameIndent: true
     }

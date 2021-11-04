@@ -1,8 +1,38 @@
 [
     {
-        "title": "有可能的夜晚",
-        "seconds": 279,
-        "src": "https://music.163.com/song/media/outer/url?id=26217171.mp3",
-        "cover": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeTwo%2Fsong2.JPG"
+        "title": "The Lazy Song",
+        "seconds": 193,
+        "src": "https://music.163.com/song/media/outer/url?id=27645016.mp3",
+        "cover": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/lookGoodP1%2Fsongs%2Fsong1.JPG"
+    },
+    {
+        "title": "Count on Me",
+        "seconds": 220,
+        "src": "https://music.163.com/song/media/outer/url?id=25714146.mp3",
+        "cover": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/lookGoodP1%2Fsongs%2Fsong2.JPG"
+    },
+    {
+        "title": "I'm Yours",
+        "seconds": 242,
+        "src": "https://music.163.com/song/media/outer/url?id=410702137.mp3",
+        "cover": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/lookGoodP1%2Fsongs%2Fsong3.JPG"
+    },
+    {
+        "title": "糖",
+        "seconds": 166,
+        "src": "https://music.163.com/song/media/outer/url?id=357374.mp3",
+        "cover": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/lookGoodP1%2Fsongs%2Fsong4.JPG"
+    },
+    {
+        "title": "Limousine",
+        "seconds": 214,
+        "src": "https://music.163.com/song/media/outer/url?id=409931331.mp3",
+        "cover": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/lookGoodP1%2Fsongs%2Fsong5.JPG"
+    },
+    {
+        "title": "我想牵着你的手",
+        "seconds": 167,
+        "src": "https://music.163.com/song/media/outer/url?id=27646702.mp3",
+        "cover": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/lookGoodP1%2Fsongs%2Fsong6.JPG"
     }
 ]
