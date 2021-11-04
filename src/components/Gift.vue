@@ -4,7 +4,10 @@
     <!-- Modified by Rosebud on Nov 7 2019 -->
     <div class="greetings">
       <p>{{ year }}-{{ month }}-{{ today }} {{ weekDay }}</p>
-      <p><a href="http://49.235.109.138/wannings-turntable/">🌈</a> 婉宁今天也要开心呀</p>
+      <p v-show="timeCheck === 'morning'"><a href="http://49.235.109.138/wannings-turntable/">🌇</a> 婉宁早上好，今天也要开心呀!</p>
+      <p v-show="timeCheck === 'daytime'"><a href="http://49.235.109.138/wannings-turntable/">🌈</a> 记得喝水嗷</p>
+      <p v-show="timeCheck === 'nightfall'"><a href="http://49.235.109.138/wannings-turntable/">🌆</a> 忍不住感叹婉宁的可爱</p>
+      <p v-show="timeCheck === 'night'"><a href="http://49.235.109.138/wannings-turntable/">🌃</a> 婉宁晚上好，早点休息噢</p>
     </div>
     <time class="time">
       <span class="clock__hour">{{ hours }}</span>
@@ -62,6 +65,24 @@ const getDay = () => padZero(getDate().getDate())
 
 const getWeek = () => week[getDate().getDay()]
 
+const getTimeInADay = () => {
+  let hours = getDate().getHours();
+  let timeSlot = '';
+  if (hours >= 4 && hours < 9) {
+    timeSlot = 'morning';
+    return timeSlot;
+  } else if (hours >= 9 && hours < 16) {
+    timeSlot = 'daytime';
+    return timeSlot;
+  } else if (hours >= 16 && hours < 19) {
+    timeSlot = 'nightfall';
+    return timeSlot;
+  } else {
+    timeSlot = 'night';
+    return timeSlot;
+  }
+}
+
 // const t1 = "2021/10/13 20:12:13"; //数据
 // const dateBegin = new Date(t1); // 转化为Date对象的形式
 // var dateEnd = new Date(); // 当前时间数据
@@ -79,7 +100,8 @@ export default {
       year: getYear(),
       month: getMonth(),
       today: getDay(),
-      weekDay: getWeek()
+      weekDay: getWeek(),
+      timeCheck: getTimeInADay()
     }
   },
   created() {
@@ -89,6 +111,7 @@ export default {
       this.seconds = getSeconds()
       this.today = getDay()
       this.weekDay = getWeek()
+      this.timeCheck = getTimeInADay()
     }, 1000)
   },
   destroyed() {
@@ -110,14 +133,14 @@ export default {
           transform: translate(-50%, -50%);
   color: #de6f90;
   text-shadow: 0 0 10px #cdc1c7, 0 0 10px rgba(211, 163, 225, 0.1);
-  font-size: 18px;
+  font-size: 17px;
   letter-spacing: 0.1em;
 }
 .greetings {
-  margin-top: 7px;
-  font-size: 13px;
+  margin-top: 5px;
+  font-size: 12px;
 }
 .greetings p {
-  margin: 3px;
+  margin: 2px;
 }
 </style>
