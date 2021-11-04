@@ -6,8 +6,13 @@
                 <div class="sidebar-card">
                     <ul>
                         <li v-for="episode in episodes" :key="episode.name" class="episodes">
-                            <div class="details" @click="setEpi(episode.url)">
-                                <h2 class="episode-title">
+                            <div 
+                            :class="{'details': !isCurrent(episode.url), 'details-current': isCurrent(episode.url)}"
+                            @click="setEpi(episode.url)">
+                                <h2 class="episode-title" v-show="!episode.nameIndent">
+                                {{ episode.name }}
+                                </h2>
+                                <h2 class="episode-title-indent" v-show="episode.nameIndent">
                                 {{ episode.name }}
                                 </h2>
                                 <p class="episode-date">{{ episode.releaseDate }}</p>
@@ -20,7 +25,6 @@
                     <p style="display: inline">我买了</p><input style="width: 41px" type="text" @input="inputListener" /><p style="display: inline">的薄荷</p>
                     <div class="gift-box" v-show="showGiftBox">
                         <button @click="displayGift">🎁</button>
-                        <!-- <a href="http://49.235.109.138/wannings-turntable/">🎁</a> -->
                     </div>
                 </div>
             </div>
@@ -41,6 +45,10 @@ export default {
     },
     methods: {
         ...mapMutations(['toggleSidebar', 'setEpisode']),
+
+        isCurrent(ep) {
+            return ep === this.$store.state.episode;
+        },
 
         closeSidebarPanel() {
             this.toggleSidebar()
@@ -109,7 +117,7 @@ export default {
     background-color: rgba(255, 255, 255, 1);
     height: 430px;
     width: 100%;
-    padding: 13px;
+    padding: 16px 7px;
     position: fixed;
     top: 110px;
     /* transform: translateY(-50%); */
@@ -147,33 +155,56 @@ export default {
 
 .episodes {
     display: flex;
-    padding: 10px;
+    padding: 12px 3px;
 }
 .details {
-    margin-left: 10px;
+    margin-left: 3px;
     width: 100%;
 }
 .details > .episode-title {
     color: #585858;
-    font-size: 18px;
+    font-size: 16px;
     text-align: left;
+}
+.details > .episode-title-indent {
+    color: #585858;
+    font-size: 16px;
+    text-align: left;
+    text-indent: -0.5em;
 }
 .details > .episode-date {
     color: #5d5555;
+    font-size: 7px;
+    text-align: left;
+}
+.details-current > .episode-title {
+    color: #de6f90;
+    font-size: 16px;
+    text-align: left;
+}
+.details-current > .episode-title-indent {
+    color: #de6f90;
+    font-size: 16px;
+    text-align: left;
+    text-indent: -0.5em;
+}
+.details-current > .episode-date {
+    color: #de6f90;
+    font-size: 7px;
     text-align: left;
 }
 
 .episode-title{
     width: 100%;
     color: #53565a;
-    font-size: 1.13em;
-    text-align: center;
+    /* font-size: 1.13em;
+    text-align: center; */
     margin-bottom: 5px;
 }
 .episode-date {
     font-family: Muli;
     width: 100%;
-    font-weight: 400;
-    text-align: center;
+    /* font-weight: 400;
+    text-align: center; */
 }
 </style>

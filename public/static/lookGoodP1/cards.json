@@ -5,14 +5,14 @@
         "line3": "周四",
         "line4": "",
         "line5": "·",
-        "line6": "欢迎收听小王子的第二张唱片 ",
+        "line6": "《你今天真好看》Part One",
         "zIndex": 10,
         "scale": 1,
         "translateY": 0,
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/lp-card-cover.jpg",
         "puzzle": "none",
-        "bgImg": "bg"
+        "bgImg": "story"
     },
     {
         "line1": "Dancing Queen",
@@ -27,7 +27,7 @@
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeTwo%2FDancing.JPG",
         "puzzle": "none",
-        "bgImg": "bg"
+        "bgImg": "story"
     },
     {
         "line1": "우주를 줄게（给你宇宙）",
@@ -42,7 +42,7 @@
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeTwo%2Fsong9.JPG",
         "puzzle": "none",
-        "bgImg": "bg"
+        "bgImg": "story"
     },
     {
         "line1": "有可能的夜晚",
@@ -57,7 +57,7 @@
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeTwo%2Fsong2.JPG",
         "puzzle": "none",
-        "bgImg": "bg"
+        "bgImg": "story"
     },
     {
         "line1": "100 days",
@@ -72,7 +72,7 @@
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeTwo%2Fsong3.JPG",
         "puzzle": "none",
-        "bgImg": "bg"
+        "bgImg": "story"
     },
     {
         "line1": "小宇",
@@ -87,7 +87,7 @@
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeTwo%2Fsong4.JPG",
         "puzzle": "none",
-        "bgImg": "bg"
+        "bgImg": "story"
     },
     {
         "line1": "가을 아침（秋日早晨）",
@@ -102,7 +102,7 @@
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeTwo%2Fsong5.JPG",
         "puzzle": "none",
-        "bgImg": "bg"
+        "bgImg": "story"
     },
     {
         "line1": "云烟成雨",
@@ -117,7 +117,7 @@
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeTwo%2Fsong8.JPG",
         "puzzle": "none",
-        "bgImg": "bg"
+        "bgImg": "story"
     },
     {
         "line1": "爱你就像爱生命",
@@ -132,7 +132,7 @@
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeTwo%2Fsong7.JPG",
         "puzzle": "none",
-        "bgImg": "bg"
+        "bgImg": "story"
     },
     {
         "line1": "At The Same Time",
@@ -147,6 +147,6 @@
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeTwo%2Fsong1.JPG",
         "puzzle": "none",
-        "bgImg": "bg"
+        "bgImg": "story"
     }
 ]

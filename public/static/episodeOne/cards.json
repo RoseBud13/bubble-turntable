@@ -11,7 +11,8 @@
         "translateY": 0,
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/lp-card-cover.jpg",
-        "puzzle": "none"
+        "puzzle": "none",
+        "bgImg": "bg"
     },
     {
         "line1": "My Jinji",
@@ -25,7 +26,8 @@
         "translateY": "4vh",
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeOne%2Fsong9.JPG",
-        "puzzle": "none"
+        "puzzle": "none",
+        "bgImg": "bg"
     },
     {
         "line1": "假面舞会",
@@ -39,7 +41,8 @@
         "translateY": "7vh",
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeOne%2Fsong2.JPG",
-        "puzzle": "none"
+        "puzzle": "none",
+        "bgImg": "bg"
     },
     {
         "line1": "The Only Exception",
@@ -53,7 +56,8 @@
         "translateY": "29vh",
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeOne%2Fsong3.JPG",
-        "puzzle": "none"
+        "puzzle": "none",
+        "bgImg": "bg"
     },
     {
         "line1": "风平浪静",
@@ -67,7 +71,8 @@
         "translateY": "40vh",
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeOne%2Fsong4.JPG",
-        "puzzle": "none"
+        "puzzle": "none",
+        "bgImg": "bg"
     },
     {
         "line1": "Hero",
@@ -81,7 +86,8 @@
         "translateY": "70vh",
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeOne%2Fsong5.JPG",
-        "puzzle": "none"
+        "puzzle": "none",
+        "bgImg": "bg"
     },
     {
         "line1": "天赋异禀",
@@ -95,7 +101,8 @@
         "translateY": "70vh",
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeOne%2Fsong6.JPG",
-        "puzzle": "none"
+        "puzzle": "none",
+        "bgImg": "bg"
     },
     {
         "line1": "爱人错过",
@@ -109,7 +116,8 @@
         "translateY": "70vh",
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeOne%2Fsong8.JPG",
-        "puzzle": "none"
+        "puzzle": "none",
+        "bgImg": "bg"
     },
     {
         "line1": "There Must Be More To Life Than This",
@@ -123,7 +131,8 @@
         "translateY": "70vh",
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeOne%2Fsong1.JPG",
-        "puzzle": "none"
+        "puzzle": "none",
+        "bgImg": "bg"
     },
     {
         "line1": "R&B All Night",
@@ -137,6 +146,7 @@
         "translateY": "70vh",
         "transitionTime": 1,
         "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/EpisodeOne%2Fsong7.JPG",
-        "puzzle": "none"
+        "puzzle": "none",
+        "bgImg": "bg"
     }
 ]

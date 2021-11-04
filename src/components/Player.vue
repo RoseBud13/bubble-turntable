@@ -215,7 +215,7 @@ export default {
     background-color: white;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12),
         0 20px 20px rgba(95, 23, 101, 0.2);
-    z-index: 12;
+    z-index: 99;
 }
 .disk-wrapper {
     flex: 1.2;
@@ -232,7 +232,7 @@ export default {
     margin-top: 120px;
     width: 282px;
     height: 50px;
-    z-index: 11;
+    z-index: 98;
 }
 
 .disk {
@@ -355,7 +355,7 @@ export default {
     height: 70px;
     width: 340px;
     border-radius: 33px;
-    z-index: 12;
+    z-index: 99;
     position: fixed;
     top: 220px;
 }

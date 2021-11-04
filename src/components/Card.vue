@@ -20,7 +20,12 @@
                     <img
                         class="bg-img"
                         :src="item.img"
-                        alt=""
+                        v-show="item.bgImg === 'bg'"
+                    >
+                    <img 
+                        class="bg-story" 
+                        :src="item.img" 
+                        v-show="item.bgImg === 'story'"
                     >
                     <div class="card-content">
                         <p>{{item.line1}}</p>
@@ -356,6 +361,15 @@ export default {
     }
     .bg-img {
         opacity: 0.3;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+    .bg-story {
+        opacity: 1;
         position: absolute;
         left: 0;
         top: 0;

@@ -125,7 +125,7 @@ export default {
     position: fixed;
     top: 0;
     text-align: center;
-    z-index: 12;
+    z-index: 99;
 }
 .time {
   color: #ffffff;
