@@ -4,9 +4,10 @@
     <!-- Modified by Rosebud on Nov 7 2019 -->
     <div class="greetings">
       <p>{{ year }}-{{ month }}-{{ today }} {{ weekDay }}</p>
+      <p v-show="timeCheck === 'midnight'"><a href="http://49.235.109.138/wannings-turntable/">💫</a> 熬夜会长痘痘的</p>
       <p v-show="timeCheck === 'morning'"><a href="http://49.235.109.138/wannings-turntable/">🌇</a> 婉宁早上好，今天也要开心呀!</p>
-      <p v-show="timeCheck === 'daytime'"><a href="http://49.235.109.138/wannings-turntable/">🌈</a> 记得喝水嗷</p>
-      <p v-show="timeCheck === 'nightfall'"><a href="http://49.235.109.138/wannings-turntable/">🌆</a> 忍不住感叹婉宁的可爱</p>
+      <p v-show="timeCheck === 'daytime'"><a href="http://49.235.109.138/wannings-turntable/">🌈</a> 记得喝水吃饱嗷</p>
+      <p v-show="timeCheck === 'nightfall'"><a href="http://49.235.109.138/wannings-turntable/">🌆</a> 就，每天都忍不住感叹孙婉宁还有这个世界的可爱和美好</p>
       <p v-show="timeCheck === 'night'"><a href="http://49.235.109.138/wannings-turntable/">🌃</a> 婉宁晚上好，早点休息噢</p>
     </div>
     <time class="time">
@@ -68,7 +69,7 @@ const getWeek = () => week[getDate().getDay()]
 const getTimeInADay = () => {
   let hours = getDate().getHours();
   let timeSlot = '';
-  if (hours >= 4 && hours < 9) {
+  if (hours >= 6 && hours < 9) {
     timeSlot = 'morning';
     return timeSlot;
   } else if (hours >= 9 && hours < 16) {
@@ -76,6 +77,9 @@ const getTimeInADay = () => {
     return timeSlot;
   } else if (hours >= 16 && hours < 19) {
     timeSlot = 'nightfall';
+    return timeSlot;
+  } else if (hours >= 0 && hours < 6){
+    timeSlot = 'midnight';
     return timeSlot;
   } else {
     timeSlot = 'night';
