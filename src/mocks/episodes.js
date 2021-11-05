@@ -16,6 +16,12 @@ const episodes = [
         releaseDate: '2021-11-05',
         url: 'lookGoodP1',
         nameIndent: true
+    },
+    {
+        name: 'little pretty ugly',
+        releaseDate: '2021-11-05',
+        url: 'episodeThree',
+        nameIndent: false
     }
 ];
 
