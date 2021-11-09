@@ -5,9 +5,10 @@
         <episodes v-on:triggerGift = "showGift"></episodes>
         <rose></rose>
         <div class="fearless">
-            <p>But with you I'd dance in a storm</p>
-            <p>In my best dress</p>
-            <router-link to="/bubble-turntable/" style="text-decoration: none; color: #E8C547;">Fearless</router-link>
+            <div v-for="(item, index) in poemMsgs" :key="index">
+                <p>{{item.line}}</p>
+            </div>
+            <router-link to="/bubble-turntable/" style="text-decoration: none; color: #E8C547;">我是无畏的人</router-link>
         </div>
     </div>
 </template>
@@ -17,6 +18,7 @@ import Player from '../components/Player.vue'
 import Episodes from '../components/Episodes.vue'
 import Rose from '../components/Rose.vue'
 import Gift from '../components/Gift.vue'
+import { getPoem } from '../api'
 
 export default {
     components: {
@@ -27,13 +29,26 @@ export default {
     },
     data() {
         return {
-            giftDisplay: ''
+            giftDisplay: '',
+            poemMsgs: [],
+            poemLct: 'messages'
         }
+    },
+    mounted() {
+        this.fetchPoem(this.poemLct);
     },
     methods: {
         showGift(msg) {
             this.giftDisplay = msg;
-        }
+        },
+
+        fetchPoem(lct) {
+            getPoem(lct).then(response => {
+                this.poemMsgs = response.data;
+            }).catch(e => {
+                console.log(e)
+            });
+        },
     }
 }
 </script>

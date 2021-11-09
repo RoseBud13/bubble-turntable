@@ -13,3 +13,10 @@ export function getCards(episode) {
         method: 'get'
     })
 }
+
+export function getPoem(location) {
+    return request({
+        url: `/${location}/poem.json`,
+        method: 'get'
+    })
+}
