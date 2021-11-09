@@ -1,7 +1,7 @@
 <template>
     <div class="player">
         <div class="disk-wrapper" @click="showDisks">
-            <div class="disk" :class="{ disk__playing: isPlaying }">
+            <div class="disk" :class="{ disk__playing: $store.state.isPlaying }">
                 <label 
                     class="disk-cover" 
                     ref="cover"
@@ -13,11 +13,11 @@
             </div>
         </div>
         <div class="control-buttons-wrapper">
-            <div class="control" :class="{ control__playing: isPlaying }">
+            <div class="control" :class="{ control__playing: $store.state.isPlaying }">
                 <div class="button button-side" @click="prev">
                     <i class="fa fa-backward" />
                 </div>
-                <div class="button" v-if="!isPlaying" @click="play">
+                <div class="button" v-if="!$store.state.isPlaying" @click="play">
                     <i class="fa fa-play"></i>
                 </div>
                 <div class="button" v-else @click="pause">
@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="progress-bar-wrapper">
-        <div class="progress" :class="{ progress__playing: isPlaying }">
+        <div class="progress" :class="{ progress__playing: $store.state.isPlaying }">
             <h2 class="progress-title">{{ current.title }}</h2>
             <p class="progress-text">
                 {{ currentTimer }} / {{ current.totalTimer }}
@@ -76,7 +76,7 @@ export default {
             current: {},
             currentTimer: "00:00",
             index: 0,
-            isPlaying: false,
+            // isPlaying: this.$store.state.isPlaying,
             progress: "",
             stopMatrix: "",
             isDisplayed: false
@@ -93,7 +93,7 @@ export default {
         draw();
     },
     methods: {
-        ...mapMutations(['toggleSidebar']),
+        ...mapMutations(['toggleSidebar', 'beginPlayerState', 'endPlayerState']),
 
         toggleEpisodes() {
             this.toggleSidebar();
@@ -136,13 +136,15 @@ export default {
                 this.player.src = this.current.src;
             }
             this.player.play();
-            this.isPlaying = true;
+            // this.isPlaying = true;
+            this.beginPlayerState();
 
             this.playListener();
         },
         pause() {
             this.player.pause();
-            this.isPlaying = false;
+            // this.isPlaying = false;
+            this.endPlayerState();
         },
         next() {
             this.current.isPlaying = false;
@@ -173,10 +175,16 @@ export default {
     watch: {
         '$store.state.episode'(newVal, oldVal) {
             this.fetchSongs(newVal);
-            this.isPlaying = false;
+            // this.isPlaying = false;
+            this.endPlayerState();
+        },
+      
+        $route(to, from){
+            this.endPlayerState();
+            this.player.pause();
         },
 
-        isPlaying(song) {
+        '$store.state.isPlaying'(song) {
             if (!song) {
                 this.stopMatrix = window.getComputedStyle(this.$refs.cover).transform;
             } else {

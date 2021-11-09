@@ -9,10 +9,13 @@
                             <div 
                             :class="{'details': !isCurrent(episode.url), 'details-current': isCurrent(episode.url)}"
                             @click="setEpi(episode.url)">
-                                <h2 class="episode-title" v-show="!episode.nameIndent">
+                                <h2 class="episode-title" v-show="episode.nameRegular">
                                 {{ episode.name }}
                                 </h2>
                                 <h2 class="episode-title-indent" v-show="episode.nameIndent">
+                                {{ episode.name }}
+                                </h2>
+                                <h2 class="episode-title-mini" v-show="episode.nameMini">
                                 {{ episode.name }}
                                 </h2>
                                 <p class="episode-date">{{ episode.releaseDate }}</p>
@@ -20,7 +23,14 @@
                         </li>
                     </ul>
                 </div>
-                <div class="sidebar-gift">
+                <div class="sidebar-gift-sorrow" v-show="showSorrow === 'show'">
+                    <p>落叶就落叶</p>
+                    <input style="width: 83px" type="text" @input="inputListenerSorrow" />
+                    <div class="gift-box" v-show="showGiftBoxSorrow">
+                        <router-link to="/bubble-turntable/sorrow/" style="text-decoration: none; color: inherit;">不要害怕。玫瑰总是在那儿。</router-link>
+                    </div>
+                </div>
+                <div class="sidebar-gift" v-show="showSorrow !== 'show'">
                     <p>你选了decaf的美式</p>
                     <p style="display: inline">我买了</p><input style="width: 41px" type="text" @input="inputListener" /><p style="display: inline">的薄荷</p>
                     <div class="gift-box" v-show="showGiftBox">
@@ -40,11 +50,18 @@ export default {
         return {
             episodes: episodes,
             showGiftBox: false,
-            openGiftBox: 'show gift'
+            showGiftBoxSorrow: false,
+            openGiftBox: 'show gift',
+            showSorrow: 'show'
+        }
+    },
+    watch: {
+        '$store.state.beSorrow'(newVal, oldVal) {
+            this.showSorrow = newVal;
         }
     },
     methods: {
-        ...mapMutations(['toggleSidebar', 'setEpisode']),
+        ...mapMutations(['toggleSidebar', 'setEpisode', 'isSorrow', 'isNotSorrow']),
 
         isCurrent(ep) {
             return ep === this.$store.state.episode;
@@ -55,15 +72,28 @@ export default {
         },
 
         setEpi(url) {
-            this.setEpisode(url);
-            this.closeSidebarPanel();
-            // console.log(this.$store.state.episode);
+            if (url === 'sorrow') {
+                this.setEpisode(url);
+                this.isSorrow();
+                this.closeSidebarPanel();
+            } else {
+                this.setEpisode(url);
+                this.isNotSorrow();
+                this.closeSidebarPanel();
+            }
         },
 
         inputListener(e) {
             this.inputV = e.target.value;
             if ((this.inputV === 'extra') || (this.inputV === 'Extra')) {
                 this.showGiftBox = true;
+            }
+        },
+
+        inputListenerSorrow(e) {
+            this.inputV = e.target.value;
+            if (this.inputV === '结冰就结冰') {
+                this.showGiftBoxSorrow = true;
             }
         },
 
@@ -142,6 +172,32 @@ export default {
 .sidebar-gift textarea:focus, input:focus {
     outline: none;
 }
+.sidebar-gift-sorrow {
+    position: fixed;
+    top: 555px;
+    background-color: rgba(255, 255, 255, 1);
+    height: 70px;
+    width: 100%;
+    padding: 13px;
+    border-radius: 0 0 0 30px;
+    color: #9b7782;
+}
+.sidebar-gift-sorrow input {
+    border: none;
+    outline: none;
+    border-radius: 0px;
+    border-bottom: 1px solid #9b7782;
+}
+.sidebar-gift-sorrow textarea:focus, input:focus {
+    outline: none;
+}
+.sidebar-gift-sorrow .gift-box {
+    margin-left: 0;
+    font-size: 10px;
+    padding: 6px;
+    border: none;
+    background: none;
+}
 .gift-box {
     margin-top: 5px;
 }
@@ -172,9 +228,14 @@ export default {
     text-align: left;
     text-indent: -0.5em;
 }
+.details > .episode-title-mini {
+    color: #585858;
+    font-size: 13px;
+    text-align: left;
+}
 .details > .episode-date {
     color: #5d5555;
-    font-size: 7px;
+    font-size: 9px;
     text-align: left;
 }
 .details-current > .episode-title {
@@ -188,9 +249,14 @@ export default {
     text-align: left;
     text-indent: -0.5em;
 }
+.details-current > .episode-title-mini {
+    color: #de6f90;
+    font-size: 13px;
+    text-align: left;
+}
 .details-current > .episode-date {
     color: #de6f90;
-    font-size: 7px;
+    font-size: 9px;
     text-align: left;
 }
 
