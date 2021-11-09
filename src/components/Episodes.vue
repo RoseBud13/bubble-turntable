@@ -42,13 +42,13 @@
     </div>
 </template>
 <script>
-import episodes from '../mocks/episodes'
 import { mapMutations } from 'vuex';
+import { getEpisodes } from '../api'
 
 export default {
     data() {
         return {
-            episodes: episodes,
+            episodes: [],
             showGiftBox: false,
             showGiftBoxSorrow: false,
             openGiftBox: 'show gift',
@@ -60,11 +60,22 @@ export default {
             this.showSorrow = newVal;
         }
     },
+    mounted() {
+        this.fetchEpisodes();
+    },
     methods: {
         ...mapMutations(['toggleSidebar', 'setEpisode', 'isSorrow', 'isNotSorrow']),
 
         isCurrent(ep) {
             return ep === this.$store.state.episode;
+        },
+
+        fetchEpisodes() {
+            getEpisodes().then(response => {
+                this.episodes = response.data;
+            }).catch(e => {
+                console.log(e)
+            });
         },
 
         closeSidebarPanel() {

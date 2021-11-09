@@ -1,5 +1,12 @@
 import request from '../utils/request'
 
+export function getEpisodes() {
+    return request({
+        url: `/episodes.json`,
+        method: 'get'
+    })
+}
+
 export function getSongs(episode) {
     return request({
         url: `/${episode}/songs.json`,
