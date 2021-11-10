@@ -38,5 +38,21 @@
         "nameRegular": false,
         "nameIndent": false,
         "nameMini": true
+    },
+    {
+        "name": "3 am",
+        "releaseDate": "2021-11-09",
+        "url": "galaxy",
+        "nameRegular": true,
+        "nameIndent": false,
+        "nameMini": false
+    },
+    {
+        "name": "Vincent",
+        "releaseDate": "2021-11-10",
+        "url": "vincent",
+        "nameRegular": true,
+        "nameIndent": false,
+        "nameMini": false
     }
 ]
