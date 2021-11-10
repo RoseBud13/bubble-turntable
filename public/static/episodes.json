@@ -54,5 +54,13 @@
         "nameRegular": true,
         "nameIndent": false,
         "nameMini": false
+    },
+    {
+        "name": "Charlie's Last Letter",
+        "releaseDate": "2021-11-11",
+        "url": "charlies",
+        "nameRegular": false,
+        "nameIndent": false,
+        "nameMini": true
     }
 ]

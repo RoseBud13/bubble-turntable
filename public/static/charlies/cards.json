@@ -1,0 +1,17 @@
+[
+    {
+        "line1": "\"We sing. We dance. We steal things.\"",
+        "line2": "·",
+        "line3": "\"You see things, you keep quiet about them, and you understand.\"",
+        "line4": "·",
+        "line5": "\"We are infinite.\"",
+        "line6": "",
+        "zIndex": 10,
+        "scale": 1,
+        "translateY": 0,
+        "transitionTime": 1,
+        "img": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/charlies%2Fwallflower.jpg",
+        "puzzle": "none",
+        "bgImg": "bg"
+    }
+]

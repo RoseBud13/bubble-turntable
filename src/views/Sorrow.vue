@@ -71,7 +71,7 @@ html, body {
 }
 .fearless {
     position: fixed;
-    bottom: 50px;
+    bottom: 30px;
     text-align: center;
 }
 .fearless p {

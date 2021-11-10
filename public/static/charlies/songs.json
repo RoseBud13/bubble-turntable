@@ -1,0 +1,20 @@
+[
+    {
+        "title": "Charlie's Last Letter",
+        "seconds": 108,
+        "src": "https://music.163.com/song/media/outer/url?id=524462203.mp3",
+        "cover": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/charlies%2Fsong1.jpg"
+    },
+    {
+        "title": "Heroes",
+        "seconds": 368,
+        "src": "https://music.163.com/song/media/outer/url?id=524462204.mp3",
+        "cover": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/charlies%2Fsong2.jpg"
+    },
+    {
+        "title": "Asleep",
+        "seconds": 250,
+        "src": "https://music.163.com/song/media/outer/url?id=524462198.mp3",
+        "cover": "https://photo-arch-1306125602.cos.ap-shanghai.myqcloud.com/charlies%2Fsong3.jpg"
+    }
+]
