@@ -9,6 +9,11 @@
       <p v-show="timeCheck === 'daytime'"><a href="http://49.235.109.138/wannings-turntable/">🌈</a> 记得喝水吃饱嗷</p>
       <p v-show="timeCheck === 'nightfall'"><a href="http://49.235.109.138/wannings-turntable/">🌆</a> 就，每天都忍不住感叹孙婉宁还有这个世界的可爱和美好</p>
       <p v-show="timeCheck === 'night'"><a href="http://49.235.109.138/wannings-turntable/">🌃</a> 婉宁晚上好，早点休息噢</p> -->
+      <p v-show="timeCheck === 'line1'">我现在想到欧洲野牛和天使</p>
+      <p v-show="timeCheck === 'line2'">想到颜料持久的秘密</p>
+      <p v-show="timeCheck === 'line3'">想到预言性的十四行诗</p>
+      <p v-show="timeCheck === 'line4'">想到艺术的庇护所</p>
+      <p v-show="timeCheck === 'line5'">这就是你和我可以共享的唯一不朽的事物</p>
     </div>
     <time class="time">
       <span class="clock__hour">{{ hours }}</span>
@@ -66,23 +71,44 @@ const getDay = () => padZero(getDate().getDate())
 
 const getWeek = () => week[getDate().getDay()]
 
-const getTimeInADay = () => {
+// const getTimeInADay = () => {
+//   let hours = getDate().getHours();
+//   let timeSlot = '';
+//   if (hours >= 6 && hours < 9) {
+//     timeSlot = 'morning';
+//     return timeSlot;
+//   } else if (hours >= 9 && hours < 16) {
+//     timeSlot = 'daytime';
+//     return timeSlot;
+//   } else if (hours >= 16 && hours < 19) {
+//     timeSlot = 'nightfall';
+//     return timeSlot;
+//   } else if (hours >= 0 && hours < 6){
+//     timeSlot = 'midnight';
+//     return timeSlot;
+//   } else {
+//     timeSlot = 'night';
+//     return timeSlot;
+//   }
+// }
+
+const alterPoem = () => {
   let hours = getDate().getHours();
   let timeSlot = '';
-  if (hours >= 6 && hours < 9) {
-    timeSlot = 'morning';
+  if (hours >= 5 && hours < 10) {
+    timeSlot = 'line1';
     return timeSlot;
-  } else if (hours >= 9 && hours < 16) {
-    timeSlot = 'daytime';
+  } else if (hours >= 10 && hours < 15) {
+    timeSlot = 'line2';
     return timeSlot;
-  } else if (hours >= 16 && hours < 19) {
-    timeSlot = 'nightfall';
+  } else if (hours >= 15 && hours < 20) {
+    timeSlot = 'line3';
     return timeSlot;
-  } else if (hours >= 0 && hours < 6){
-    timeSlot = 'midnight';
+  } else if (hours >= 20 && hours < 24){
+    timeSlot = 'line4';
     return timeSlot;
   } else {
-    timeSlot = 'night';
+    timeSlot = 'line5';
     return timeSlot;
   }
 }
@@ -105,7 +131,7 @@ export default {
       month: getMonth(),
       today: getDay(),
       weekDay: getWeek(),
-      // timeCheck: getTimeInADay()
+      timeCheck: alterPoem()
     }
   },
   created() {
@@ -115,7 +141,7 @@ export default {
       this.seconds = getSeconds()
       this.today = getDay()
       this.weekDay = getWeek()
-      // this.timeCheck = getTimeInADay()
+      this.timeCheck = alterPoem()
     }, 1000)
   },
   destroyed() {
