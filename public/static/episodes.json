@@ -62,5 +62,13 @@
         "nameRegular": false,
         "nameIndent": false,
         "nameMini": true
+    },
+    {
+        "name": "那些突兀又虚渺的浪漫",
+        "releaseDate": "2021-11-11",
+        "url": "notRomantic",
+        "nameRegular": false,
+        "nameIndent": false,
+        "nameMini": true
     }
 ]

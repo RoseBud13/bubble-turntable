@@ -3,7 +3,7 @@ import {createStore} from 'vuex'
 export default createStore({
     state: {
         isSidebarOpen: false,
-        episode: 'charlies',
+        episode: 'notRomantic',
         beSorrow: 'show',
         isPlaying: false
     },
