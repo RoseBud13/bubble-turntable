@@ -4,11 +4,11 @@
     <!-- Modified by Rosebud on Nov 7 2019 -->
     <div class="greetings">
       <p>{{ year }}-{{ month }}-{{ today }} {{ weekDay }}</p>
-      <p v-show="timeCheck === 'midnight'"><a href="http://49.235.109.138/wannings-turntable/">💫</a> 熬夜会长痘痘的</p>
+      <!-- <p v-show="timeCheck === 'midnight'"><a href="http://49.235.109.138/wannings-turntable/">💫</a> 熬夜会长痘痘的</p>
       <p v-show="timeCheck === 'morning'"><a href="http://49.235.109.138/wannings-turntable/">🌇</a> 婉宁早上好，今天也要开心呀!</p>
       <p v-show="timeCheck === 'daytime'"><a href="http://49.235.109.138/wannings-turntable/">🌈</a> 记得喝水吃饱嗷</p>
       <p v-show="timeCheck === 'nightfall'"><a href="http://49.235.109.138/wannings-turntable/">🌆</a> 就，每天都忍不住感叹孙婉宁还有这个世界的可爱和美好</p>
-      <p v-show="timeCheck === 'night'"><a href="http://49.235.109.138/wannings-turntable/">🌃</a> 婉宁晚上好，早点休息噢</p>
+      <p v-show="timeCheck === 'night'"><a href="http://49.235.109.138/wannings-turntable/">🌃</a> 婉宁晚上好，早点休息噢</p> -->
     </div>
     <time class="time">
       <span class="clock__hour">{{ hours }}</span>
@@ -105,7 +105,7 @@ export default {
       month: getMonth(),
       today: getDay(),
       weekDay: getWeek(),
-      timeCheck: getTimeInADay()
+      // timeCheck: getTimeInADay()
     }
   },
   created() {
@@ -115,7 +115,7 @@ export default {
       this.seconds = getSeconds()
       this.today = getDay()
       this.weekDay = getWeek()
-      this.timeCheck = getTimeInADay()
+      // this.timeCheck = getTimeInADay()
     }, 1000)
   },
   destroyed() {
