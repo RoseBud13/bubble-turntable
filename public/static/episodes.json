@@ -70,5 +70,13 @@
         "nameRegular": false,
         "nameIndent": false,
         "nameMini": true
+    },
+    {
+        "name": "Void",
+        "releaseDate": "2021-11-13",
+        "url": "void",
+        "nameRegular": true,
+        "nameIndent": false,
+        "nameMini": false
     }
 ]
