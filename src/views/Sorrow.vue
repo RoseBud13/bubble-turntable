@@ -8,7 +8,7 @@
             <div v-for="(item, index) in poemMsgs" :key="index">
                 <p>{{item.line}}</p>
             </div>
-            <router-link to="/bubble-turntable/" style="text-decoration: none; color: #E8C547;">我是无畏的人</router-link>
+            <router-link to="/bubble-turntable/" style="text-decoration: none; color: #E8C547;">···</router-link>
         </div>
     </div>
 </template>

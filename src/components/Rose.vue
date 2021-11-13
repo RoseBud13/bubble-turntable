@@ -94,7 +94,7 @@
   left: 10px;
   top: 280px;
 }
-.container .glow {
+/* .container .glow {
   position: absolute;
   width: 170px;
   height: 170px;
@@ -112,7 +112,7 @@
   -moz-animation: glowing 2.5s ease-in-out infinite;
   -webkit-animation: glowing 2.5s ease-in-out infinite;
   animation: glowing 2.5s ease-in-out infinite;
-}
+} */
 .container .rose-petals > div {
   background: #d52d58;
   width: 45px;
@@ -575,7 +575,7 @@
     box-shadow: 0px 0px 60px #f594b8;
   }
 }
-@-moz-keyframes glowing {
+/* @-moz-keyframes glowing {
   50% {
     box-shadow: 0px 0px 60px #f594b8;
   }
@@ -589,5 +589,5 @@
   50% {
     box-shadow: 0px 0px 60px #f594b8;
   }
-}
+} */
 </style>
