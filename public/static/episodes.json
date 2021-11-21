@@ -78,5 +78,13 @@
         "nameRegular": true,
         "nameIndent": false,
         "nameMini": false
+    },
+    {
+        "name": "Those sugars",
+        "releaseDate": "2021-11-21",
+        "url": "sugars",
+        "nameRegular": true,
+        "nameIndent": false,
+        "nameMini": false
     }
 ]
