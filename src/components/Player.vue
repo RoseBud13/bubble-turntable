@@ -377,9 +377,9 @@ export default {
     flex: 0 0 auto;
     margin-right: 20px;
 }
-.disk-wrapper-in-list {
+// .disk-wrapper-in-list {
     
-}
+// }
 .disk-list .disk-in-list {
     position: relative;
     padding-top: 100%;

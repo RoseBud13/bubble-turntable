@@ -31,10 +31,15 @@
                     </div>
                 </div>
                 <div class="sidebar-gift" v-show="showSorrow !== 'show'">
-                    <p>你选了decaf的美式</p>
+                    <!-- <p>你选了decaf的美式</p>
                     <p style="display: inline">我买了</p><input style="width: 41px" type="text" @input="inputListener" /><p style="display: inline">的薄荷</p>
                     <div class="gift-box" v-show="showGiftBox">
                         <button @click="displayGift">🎁</button>
+                    </div> -->
+                    <p>Disney Gangsters ❌</p>
+                    <input style="width: 150px" type="text" @input="inputListener" />
+                    <div class="gift-box" v-show="showGiftBox">
+                        <button @click="displayGift">🦄</button>
                     </div>
                 </div>
             </div>
@@ -94,9 +99,16 @@ export default {
             }
         },
 
+        // inputListener(e) {
+        //     this.inputV = e.target.value;
+        //     if ((this.inputV === 'extra') || (this.inputV === 'Extra')) {
+        //         this.showGiftBox = true;
+        //     }
+        // },
+
         inputListener(e) {
             this.inputV = e.target.value;
-            if ((this.inputV === 'extra') || (this.inputV === 'Extra')) {
+            if ((this.inputV === 'Disney Gangsisters') || (this.inputV === 'Gangsisters') || (this.inputV === 'gangsisters') || (this.inputV === 'disney gangsisters')) {
                 this.showGiftBox = true;
             }
         },
