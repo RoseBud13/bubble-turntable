@@ -386,6 +386,8 @@ export default {
         width: 100%;
         height: auto;
         border-radius: 8px;
+        pointer-events: none;
+        // -webkit-user-drag: none;
     }
     .bg-story {
         opacity: 1;
@@ -395,6 +397,8 @@ export default {
         width: 100%;
         height: auto;
         border-radius: 8px;
+        pointer-events: none;
+        // -webkit-user-drag: none;
     }
 }
 .card-content {
@@ -403,5 +407,10 @@ export default {
 }
 .puzzle-card {
     height: 400px;
+}
+@media (max-width: 480px) {
+    .card-item .bg-story {
+        pointer-events: auto;
+    }
 }
 </style>

@@ -9,22 +9,22 @@
                         transform: stopMatrix,
                         backgroundImage: `url('${current.cover}')`
                     }"
-                />
+                ></label>
             </div>
         </div>
         <div class="control-buttons-wrapper">
             <div class="control" :class="{ control__playing: $store.state.isPlaying }">
                 <div class="button button-side" @click="prev">
-                    <i class="fa fa-backward" />
+                    <i class="fas fa-backward"></i>
                 </div>
                 <div class="button" v-if="!$store.state.isPlaying" @click="play">
-                    <i class="fa fa-play"></i>
+                    <i class="fas fa-play"></i>
                 </div>
                 <div class="button" v-else @click="pause">
-                    <i class="fa fa-pause"></i>
+                    <i class="fas fa-pause"></i>
                 </div>
                 <div class="button button-side" @click="next">
-                    <i class="fa fa-forward" />
+                    <i class="fas fa-forward"></i>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
                 {{ currentTimer }} / {{ current.totalTimer }}
             </p>
             <div class="bar">
-                <span :style="{ width: progress }" />
+                <span :style="{ width: progress }"></span>
             </div>
         </div>
     </div>
@@ -52,7 +52,7 @@
             <li class="song">
                 <div class="disk-wrapper-in-list" @click.prevent="toggleEpisodes">
                     <div class="disk-in-list">
-                        <label class="disk-cover-in-list"/>
+                        <label class="disk-cover-in-list"></label>
                     </div>
                 </div>
             </li>
