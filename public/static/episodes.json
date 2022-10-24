@@ -86,5 +86,21 @@
         "nameRegular": true,
         "nameIndent": false,
         "nameMini": false
+    },
+    {
+        "name": "Mother's Day",
+        "releaseDate": "2022-05-08",
+        "url": "mothers",
+        "nameRegular": true,
+        "nameIndent": false,
+        "nameMini": false
+    },
+    {
+        "name": "To childhood",
+        "releaseDate": "2022-06-01",
+        "url": "childhood",
+        "nameRegular": true,
+        "nameIndent": false,
+        "nameMini": false
     }
 ]
