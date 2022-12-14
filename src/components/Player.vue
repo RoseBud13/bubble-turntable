@@ -6,7 +6,6 @@
                     class="disk-cover" 
                     ref="cover"
                     :style="{
-                        transform: stopMatrix,
                         backgroundImage: `url('${current.cover}')`
                     }"
                 ></label>
@@ -40,10 +39,10 @@
             </div>
         </div>
     </div>
-    <div class="disk-list" v-show="isDisplayed">
+    <div class="disk-list" v-show="showDiskList">
         <ul>
             <li v-for="song in songList" :key="song.src" class="song">
-                <div class="disk-wrapper-in-list" @click="play(song)">
+                <div class="disk-wrapper-in-list" @click="playSelected(song)">
                     <div class="disk-in-list">
                         <label class="disk-cover-in-list" ref="cover" :style="[{backgroundImage: `url('${song.cover}')`}]"/>
                     </div>
@@ -75,22 +74,13 @@ export default {
             currentEpisode: this.$store.state.episode,
             current: {},
             currentTimer: "00:00",
-            index: 0,
-            // isPlaying: this.$store.state.isPlaying,
+            songIndex: 0,
             progress: "",
-            stopMatrix: "",
-            isDisplayed: false
+            showDiskList: false,
         }
     },
     mounted() {
-        this.fetchSongs(this.currentEpisode);
-        
-        const draw = () => {
-            requestAnimationFrame(draw);
-            const progress = this.player.currentTime / this.current.seconds;
-            this.progress = `${(progress * 100).toFixed(2)}%`;
-        };
-        draw();
+        this.initSongs(this.currentEpisode);
     },
     methods: {
         ...mapMutations(['toggleSidebar', 'beginPlayerState', 'endPlayerState']),
@@ -99,112 +89,130 @@ export default {
             this.toggleSidebar();
         },
 
-        fetchSongs(currentEpsd) {
+        initSongs(currentEpsd) {
+            console.log('init songs ======');
+            this.songIndex = 0;
             getSongs(currentEpsd).then(response => {
                 this.songList = shuffleArray(response.data);
                 this.songs = threatSongs(this.songList);
-                this.current = this.songs[this.index];
-                this.player.src = this.current.src;
+                this.current = this.songs[this.songIndex];
+                // this.player.src = this.current.src;
+                console.log('init: ', this.songIndex, this.current.title);
             }).catch(e => {
-                console.log(e)
+                console.log(e);
             });
-        },
 
-        playListener() {
             this.player.addEventListener("timeupdate", () => {
-                var playerTimer = this.player.currentTime;
+                let end = this.player.duration;
+                let now = this.player.currentTime;
+                this.currentTimer = timeFormater(now);
+                this.progress = `${(now / this.current.seconds * 100).toFixed(2)}%`;
 
-                this.currentTimer = timeFormater(playerTimer);
-                this.current.isPlaying = true;
+                if (now === end) {
+                    console.log('song ended, play next >>>>>');
+                    this.next();
+                }
             });
-            this.player.addEventListener(
-                "ended",
-                function() {
-                this.next();
-                }.bind(this)
-            );
-        },
-        setCurrent() {
-            this.current = this.songs[this.index];
-            this.play(this.current);
-        },
-        play(song) {
-            if (typeof song.src !== "undefined") {
-                this.current.isPlaying = false;
-                this.index = this.songs.indexOf(this.current);
-                this.current = song;
-                this.player.src = this.current.src;
-            }
-            this.player.play();
-            // this.isPlaying = true;
-            this.beginPlayerState();
 
-            this.playListener();
+            // this.player.addEventListener("ended", () => {
+            //     console.log('song ended, play next >>>>>');
+            //     this.next();
+            // });
         },
+
+        setCurrent() {
+            this.endPlayerState();
+            this.current = this.songs[this.songIndex];
+            console.log('set current: ', this.songIndex, this.current.title);
+            this.play();
+        },
+
+        readyPlay() {
+            this.player.load();
+            this.player.src = this.current.src;
+            console.log('src: ', this.current.src);
+
+            let checkIsPlaying = this.current.isPlaying && this.player.currentTime > 0 && !this.player.paused && !this.player.ended && this.player.readyState > this.player.HAVE_CURRENT_DATA;
+            if (!checkIsPlaying) {
+                const playPromise = this.player.play();
+                if (playPromise) {
+                    this.current.isPlaying = true;
+                    console.log('playing');
+                    playPromise.catch((e) => {
+                        console.warn(e);
+                        this.pause();
+                    });
+                }
+            } else {
+                console.warn('media cannot start');
+            }
+        },
+
+        play() {
+            this.beginPlayerState();
+            console.log('start playing: ', this.songIndex, this.current.title);
+            this.readyPlay();
+        },
+
+        readyPause() {
+            if (!this.player.paused && this.current.isPlaying) {
+                this.current.isPlaying = false;
+                return this.player.pause();
+            }
+        },
+
         pause() {
-            this.player.pause();
-            // this.isPlaying = false;
+            console.log('paused: ', this.songIndex, this.current.title)
+            this.readyPause();
             this.endPlayerState();
         },
+
         next() {
+            console.log('next >>>');
             this.current.isPlaying = false;
-            this.index = this.songs.indexOf(this.current);
-            this.index++;
-            if (this.index > this.songs.length - 1) {
-                this.index = 0;
+            this.songIndex++;
+            if (this.songIndex > this.songs.length - 1) {
+                this.songIndex = 0;
             }
             this.setCurrent();
         },
+
         prev() {
+            console.log('<<< prev');
             this.current.isPlaying = false;
-            this.index = this.songs.indexOf(this.current);
-            this.index--;
-            if (this.index < 0) {
-                this.index = this.songs.length - 1;
+            this.songIndex--;
+            if (this.songIndex < 0) {
+                this.songIndex = this.songs.length - 1;
             }
             this.setCurrent();
         },
+
         showDisks() {
-            if (this.isDisplayed === false) {
-                this.isDisplayed = true;
-            } else {
-                this.isDisplayed = false;
-            }
-        }
+            this.showDiskList = !this.showDiskList;
+        },
+
+        playSelected(selectedAudio) {
+            this.endPlayerState();
+            this.current.isPlaying = false;
+            this.songIndex = this.songs.findIndex(obj => {
+                return obj.src === selectedAudio.src;
+            });
+            console.log('new song selected: ', this.songIndex);
+            this.setCurrent();
+        },
     },
+
     watch: {
         '$store.state.episode'(newVal, oldVal) {
-            this.fetchSongs(newVal);
-            // this.isPlaying = false;
+            this.player.load()
+            this.initSongs(newVal);
             this.endPlayerState();
         },
       
         $route(to, from){
             this.endPlayerState();
             this.player.pause();
-        },
-
-        '$store.state.isPlaying'(song) {
-            if (!song) {
-                this.stopMatrix = window.getComputedStyle(this.$refs.cover).transform;
-            } else {
-                const matrix = this.stopMatrix;
-                this.stopMatrix = "";
-                const match = matrix.match(/^matrix\(([^,]+),([^,]+)/);
-                const [, sin, cos] = match || [0, 0, 0];
-                const deg = ((Math.atan2(cos, sin) / 2 / Math.PI) * 360) % 360;
-                const styles = [...document.styleSheets];
-                styles.forEach((style) => {
-                    const rules = [...style.cssRules];
-                    rules.forEach((rule) => {
-                        if (rule.type === rule.KEYFRAMES_RULE && rule.name === "rotate") {
-                        rule.cssRules[0].style.transform = `rotate(${deg}deg)`;
-                        rule.cssRules[1].style.transform = `rotate(${deg + 360}deg)`;
-                        }
-                    });
-                });
-            }
-        },
+        }
     },
 }
 </script>
