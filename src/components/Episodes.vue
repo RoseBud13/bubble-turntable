@@ -1,49 +1,47 @@
 <template>
     <div class="episodes-sidebar">
-        <div class="sidebar-backdrop" @click="closeSidebarPanel" v-if="isPanelOpen"></div>
-        <transition name="slide">
-            <div v-if="isPanelOpen" class="sidebar-panel">
-                <div class="sidebar-card">
-                    <ul>
-                        <li v-for="episode in episodes" :key="episode.name" class="episodes">
-                            <div 
-                            :class="{'details': !isCurrent(episode.url), 'details-current': isCurrent(episode.url)}"
-                            @click="setEpi(episode.url)">
-                                <h2 class="episode-title" v-show="episode.nameRegular">
-                                {{ episode.name }}
-                                </h2>
-                                <h2 class="episode-title-indent" v-show="episode.nameIndent">
-                                {{ episode.name }}
-                                </h2>
-                                <h2 class="episode-title-mini" v-show="episode.nameMini">
-                                {{ episode.name }}
-                                </h2>
-                                <p class="episode-date">{{ episode.releaseDate }}</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="sidebar-gift-sorrow" v-show="showSorrow === 'show'">
-                    <p>落叶就落叶</p>
-                    <input style="width: 83px" type="text" @input="inputListenerSorrow" />
-                    <div class="gift-box" v-show="showGiftBoxSorrow">
-                        <router-link to="/bubble-turntable/sorrow/" style="text-decoration: none; color: inherit;">void</router-link>
-                    </div>
-                </div>
-                <div class="sidebar-gift" v-show="showSorrow !== 'show'">
-                    <!-- <p>你选了decaf的美式</p>
-                    <p style="display: inline">我买了</p><input style="width: 41px" type="text" @input="inputListener" /><p style="display: inline">的薄荷</p>
-                    <div class="gift-box" v-show="showGiftBox">
-                        <button @click="displayGift">🎁</button>
-                    </div> -->
-                    <p>Disney Gangsters ❌</p>
-                    <input style="width: 150px" type="text" @input="inputListener" />
-                    <div class="gift-box" v-show="showGiftBox">
-                        <button @click="displayGift">🦄</button>
-                    </div>
+        <div class="sidebar-backdrop" @click="toggleSidebar()" v-if="this.$store.state.isSidebarOpen"></div>
+        <div class="sidebar-panel" :class="{ sidebarpanel__hidden: !this.$store.state.isSidebarOpen }">
+            <div class="sidebar-card">
+                <ul>
+                    <li v-for="episode in episodes" :key="episode.name" class="episodes">
+                        <div 
+                        :class="{'details': !isCurrent(episode.url), 'details-current': isCurrent(episode.url)}"
+                        @click="setEpi(episode.url)">
+                            <h2 class="episode-title" v-show="episode.nameRegular">
+                            {{ episode.name }}
+                            </h2>
+                            <h2 class="episode-title-indent" v-show="episode.nameIndent">
+                            {{ episode.name }}
+                            </h2>
+                            <h2 class="episode-title-mini" v-show="episode.nameMini">
+                            {{ episode.name }}
+                            </h2>
+                            <p class="episode-date">{{ episode.releaseDate }}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar-gift-sorrow" v-show="showSorrow === 'show'">
+                <p>落叶就落叶</p>
+                <input style="width: 83px" type="text" @input="inputListenerSorrow" />
+                <div class="gift-box" v-show="showGiftBoxSorrow">
+                    <router-link to="/bubble-turntable/sorrow/" style="text-decoration: none; color: inherit;">void</router-link>
                 </div>
             </div>
-        </transition>
+            <div class="sidebar-gift" v-show="showSorrow !== 'show'">
+                <!-- <p>你选了decaf的美式</p>
+                <p style="display: inline">我买了</p><input style="width: 41px" type="text" @input="inputListener" /><p style="display: inline">的薄荷</p>
+                <div class="gift-box" v-show="showGiftBox">
+                    <button @click="displayGift">🎁</button>
+                </div> -->
+                <p>Disney Gangsters ❌</p>
+                <input style="width: 150px" type="text" @input="inputListener" />
+                <div class="gift-box" v-show="showGiftBox">
+                    <button @click="displayGift">🦄</button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -83,19 +81,15 @@ export default {
             });
         },
 
-        closeSidebarPanel() {
-            this.toggleSidebar()
-        },
-
         setEpi(url) {
             if (url === 'sorrow') {
                 this.setEpisode(url);
                 this.isSorrow();
-                this.closeSidebarPanel();
+                this.toggleSidebar();
             } else {
                 this.setEpisode(url);
                 this.isNotSorrow();
-                this.closeSidebarPanel();
+                this.toggleSidebar();
             }
         },
 
@@ -122,7 +116,7 @@ export default {
 
         displayGift() {
             this.$emit('triggerGift', this.openGiftBox);
-            this.closeSidebarPanel();
+            this.toggleSidebar();
         }
     },
     computed: {
@@ -133,20 +127,6 @@ export default {
 }
 </script>
 <style>
-.slide-enter-active,
-.slide-leave-active{
-    transition: all .5s;
-}
-
-.slide-enter {
-    transform: translate(-100%, 0);
-    /* transition: all 150ms ease-in 0s; */
-}
-
-.slide-leave-to {
-    transform: translate(100%, 0);
-}
-
 .sidebar-backdrop {
     background-color: rgba(19, 15, 64, .4);
     width: 100vw;
@@ -156,7 +136,9 @@ export default {
     left: 0;
     cursor: pointer;
     z-index: 999;
+    transition: all 0.4s ease;
 }
+
 .sidebar-panel {
     position: fixed;
     right: 0;
@@ -164,7 +146,13 @@ export default {
     height: 100vh;
     width: 155px;
     z-index: 999;
+    transition: all 0.4s ease;
 }
+
+.sidebarpanel__hidden {
+  transform: translateX(100%);
+}
+
 .sidebar-card {
     overflow-y: auto;
     background-color: rgba(255, 255, 255, 1);
@@ -176,6 +164,7 @@ export default {
     /* transform: translateY(-50%); */
     border-radius: 30px 0 0 0;
 }
+
 .sidebar-gift {
     position: fixed;
     top: 555px;
@@ -186,15 +175,18 @@ export default {
     border-radius: 0 0 0 30px;
     color: #de6f90;
 }
+
 .sidebar-gift input {
     border: none;
     outline: none;
     border-radius: 0px;
     border-bottom: 1px solid #de6f90;
 }
+
 .sidebar-gift textarea:focus, input:focus {
     outline: none;
 }
+
 .sidebar-gift-sorrow {
     position: fixed;
     top: 555px;
@@ -205,15 +197,18 @@ export default {
     border-radius: 0 0 0 30px;
     color: #9b7782;
 }
+
 .sidebar-gift-sorrow input {
     border: none;
     outline: none;
     border-radius: 0px;
     border-bottom: 1px solid #9b7782;
 }
+
 .sidebar-gift-sorrow textarea:focus, input:focus {
     outline: none;
 }
+
 .sidebar-gift-sorrow .gift-box {
     margin-left: 0;
     font-size: 10px;
@@ -221,9 +216,11 @@ export default {
     border: none;
     background: none;
 }
+
 .gift-box {
     margin-top: 5px;
 }
+
 .gift-box button {
     margin-left: 60px;
     font-size: 20px;
@@ -236,47 +233,56 @@ export default {
     display: flex;
     padding: 12px 3px;
 }
+
 .details {
     margin-left: 3px;
     width: 100%;
 }
+
 .details > .episode-title {
     color: #585858;
     font-size: 16px;
     text-align: left;
 }
+
 .details > .episode-title-indent {
     color: #585858;
     font-size: 16px;
     text-align: left;
     text-indent: -0.5em;
 }
+
 .details > .episode-title-mini {
     color: #585858;
     font-size: 13px;
     text-align: left;
 }
+
 .details > .episode-date {
     color: #5d5555;
     font-size: 9px;
     text-align: left;
 }
+
 .details-current > .episode-title {
     color: #de6f90;
     font-size: 16px;
     text-align: left;
 }
+
 .details-current > .episode-title-indent {
     color: #de6f90;
     font-size: 16px;
     text-align: left;
     text-indent: -0.5em;
 }
+
 .details-current > .episode-title-mini {
     color: #de6f90;
     font-size: 13px;
     text-align: left;
 }
+
 .details-current > .episode-date {
     color: #de6f90;
     font-size: 9px;
@@ -290,6 +296,7 @@ export default {
     text-align: center; */
     margin-bottom: 5px;
 }
+
 .episode-date {
     font-family: Muli;
     width: 100%;

@@ -42,7 +42,7 @@
     <div class="disklist" :class="{ disklist__hidden: !showDiskList }">
         <ul>
             <li class="song">
-                <div class="disk-wrapper-in-list" @click.prevent="toggleEpisodes">
+                <div class="disk-wrapper-in-list" @click="toggleSidebar()">
                     <div class="disk-in-list">
                         <label class="disk-cover-in-list"></label>
                     </div>
@@ -85,10 +85,6 @@ export default {
     },
     methods: {
         ...mapMutations(['toggleSidebar', 'beginPlayerState', 'endPlayerState']),
-
-        toggleEpisodes() {
-            this.toggleSidebar();
-        },
 
         initSongs(currentEpsd) {
             console.log('init songs ======');
