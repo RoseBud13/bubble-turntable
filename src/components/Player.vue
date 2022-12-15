@@ -77,6 +77,7 @@ export default {
             songIndex: 0,
             progress: "",
             showDiskList: false,
+            isPaused: false
         }
     },
     mounted() {
@@ -124,6 +125,7 @@ export default {
             this.endPlayerState();
             this.current = this.songs[this.songIndex];
             console.log('set current: ', this.songIndex, this.current.title);
+            this.isPaused = false;
             this.play();
         },
 
@@ -150,19 +152,27 @@ export default {
 
         play() {
             this.beginPlayerState();
-            console.log('start playing: ', this.songIndex, this.current.title);
-            this.readyPlay();
+            if (!this.isPaused) {
+                console.log('start playing: ', this.songIndex, this.current.title);
+                this.readyPlay();
+            } else {
+                console.log('resume playing: ', this.songIndex, this.current.title);
+                this.current.isPlaying = true;
+                this.isPaused = false;
+                this.player.play();
+            }
         },
 
         readyPause() {
             if (!this.player.paused && this.current.isPlaying) {
                 this.current.isPlaying = false;
+                this.isPaused = true;
+                console.log('paused: ', this.songIndex, this.current.title)
                 return this.player.pause();
             }
         },
 
         pause() {
-            console.log('paused: ', this.songIndex, this.current.title)
             this.readyPause();
             this.endPlayerState();
         },
