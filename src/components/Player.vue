@@ -39,19 +39,19 @@
             </div>
         </div>
     </div>
-    <div class="disk-list" v-show="showDiskList">
+    <div class="disklist" :class="{ disklist__hidden: !showDiskList }">
         <ul>
-            <li v-for="song in songList" :key="song.src" class="song">
-                <div class="disk-wrapper-in-list" @click="playSelected(song)">
-                    <div class="disk-in-list">
-                        <label class="disk-cover-in-list" ref="cover" :style="[{backgroundImage: `url('${song.cover}')`}]"/>
-                    </div>
-                </div>
-            </li>
             <li class="song">
                 <div class="disk-wrapper-in-list" @click.prevent="toggleEpisodes">
                     <div class="disk-in-list">
                         <label class="disk-cover-in-list"></label>
+                    </div>
+                </div>
+            </li>
+            <li v-for="song in songList" :key="song.src" class="song">
+                <div class="disk-wrapper-in-list" @click="playSelected(song)">
+                    <div class="disk-in-list">
+                        <label class="disk-cover-in-list" ref="cover" :style="[{backgroundImage: `url('${song.cover}')`}]"/>
                     </div>
                 </div>
             </li>
@@ -375,7 +375,7 @@ export default {
     background-color: #ec51a5;
 }
 
-.disk-list {
+.disklist {
     background-color: rgba(255, 255, 255, 0.3);
     overflow-y: auto;
     height: 70px;
@@ -384,12 +384,22 @@ export default {
     z-index: 99;
     position: fixed;
     top: 220px;
+    transition: all 0.4s ease;
 }
-.disk-list ul {
+
+.disklist__hidden {
+    z-index: 97;
+    top: 200px;
+    transition: all 0.6s ease;
+    transform: translateY(-110%) scale(0.8);
+    transform-origin: center top;
+}
+
+.disklist ul {
     display: flex;
     overflow-x: auto;
 }
-.disk-list .song {
+.disklist .song {
     height: 70px;
     width: 70px;
     flex: 0 0 auto;
@@ -398,13 +408,13 @@ export default {
 // .disk-wrapper-in-list {
     
 // }
-.disk-list .disk-in-list {
+.disklist .disk-in-list {
     position: relative;
     padding-top: 100%;
     border-radius: 100%;
     overflow: hidden;
 }
-.disk-list .disk-cover-in-list {
+.disklist .disk-cover-in-list {
     position: absolute;
     top: -1px;
     left: -1px;
@@ -414,7 +424,7 @@ export default {
     background-size: cover;
     background-position: center;
 }
-.disk-list .disk-cover-in-list::after {
+.disklist .disk-cover-in-list::after {
     content: "";
     position: absolute;
     top: 50%;
