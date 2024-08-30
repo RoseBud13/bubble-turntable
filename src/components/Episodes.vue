@@ -26,7 +26,7 @@
                 <p>落叶就落叶</p>
                 <input style="width: 83px" type="text" @input="inputListenerSorrow" />
                 <div class="gift-box" v-show="showGiftBoxSorrow">
-                    <router-link to="/bubble-turntable/sorrow/" style="text-decoration: none; color: inherit;">void</router-link>
+                    <router-link to="/sorrow/" style="text-decoration: none; color: inherit;">void</router-link>
                 </div>
             </div>
             <div class="sidebar-gift" v-show="showSorrow !== 'show'">
